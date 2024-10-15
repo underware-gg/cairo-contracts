@@ -86,7 +86,7 @@ pub trait ERC721ABI<TState> {
     fn supports_interface(self: @TState, interface_id: felt252) -> bool;
 
     // IERC721Metadata
-    fn name(self: @TState) -> ByteArray;
+    fn _name(self: @TState) -> ByteArray;
     fn symbol(self: @TState) -> ByteArray;
     fn token_uri(self: @TState, token_id: u256) -> ByteArray;
 

@@ -404,7 +404,7 @@ pub mod ERC721Component {
         }
 
         // IERC721Metadata
-        fn name(self: @ComponentState<TContractState>) -> ByteArray {
+        fn _name(self: @ComponentState<TContractState>) -> ByteArray {
             ERC721Metadata::name(self)
         }
 

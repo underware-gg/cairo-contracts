@@ -17,7 +17,7 @@ pub trait IERC20<TState> {
 
 #[starknet::interface]
 pub trait IERC20Metadata<TState> {
-    fn name(self: @TState) -> ByteArray;
+    fn _name(self: @TState) -> ByteArray;
     fn symbol(self: @TState) -> ByteArray;
     fn decimals(self: @TState) -> u8;
 }
@@ -56,7 +56,7 @@ pub trait ERC20ABI<TState> {
     fn approve(ref self: TState, spender: ContractAddress, amount: u256) -> bool;
 
     // IERC20Metadata
-    fn name(self: @TState) -> ByteArray;
+    fn _name(self: @TState) -> ByteArray;
     fn symbol(self: @TState) -> ByteArray;
     fn decimals(self: @TState) -> u8;
 

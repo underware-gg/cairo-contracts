@@ -177,7 +177,7 @@ pub mod ERC20Component {
         TContractState, +HasComponent<TContractState>, +ERC20HooksTrait<TContractState>
     > of interface::IERC20Metadata<ComponentState<TContractState>> {
         /// Returns the name of the token.
-        fn name(self: @ComponentState<TContractState>) -> ByteArray {
+        fn _name(self: @ComponentState<TContractState>) -> ByteArray {
             self.ERC20_name.read()
         }
 
@@ -256,8 +256,8 @@ pub mod ERC20Component {
         }
 
         // IERC20Metadata
-        fn name(self: @ComponentState<TContractState>) -> ByteArray {
-            ERC20Metadata::name(self)
+        fn _name(self: @ComponentState<TContractState>) -> ByteArray {
+            ERC20Metadata::_name(self)
         }
 
         fn symbol(self: @ComponentState<TContractState>) -> ByteArray {
