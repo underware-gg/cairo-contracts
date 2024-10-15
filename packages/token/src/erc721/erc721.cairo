@@ -100,6 +100,11 @@ pub mod ERC721Component {
             token_id: u256,
             auth: ContractAddress,
         ) {}
+
+        fn token_uri(
+            self: @ComponentState<TContractState>,
+            token_id: u256,
+        ) -> ByteArray {""}
     }
 
     //
@@ -239,8 +244,8 @@ pub mod ERC721Component {
         TContractState,
         +HasComponent<TContractState>,
         +SRC5Component::HasComponent<TContractState>,
-        +ERC721HooksTrait<TContractState>,
-        +Drop<TContractState>,
+        impl Hooks: ERC721HooksTrait<TContractState>,
+        +Drop<TContractState>
     > of interface::IERC721Metadata<ComponentState<TContractState>> {
         /// Returns the NFT name.
         fn name(self: @ComponentState<TContractState>) -> ByteArray {
@@ -261,6 +266,10 @@ pub mod ERC721Component {
         fn token_uri(self: @ComponentState<TContractState>, token_id: u256) -> ByteArray {
             self._require_owned(token_id);
             let base_uri = self._base_uri();
+            let custom_uri = Hooks::token_uri(self, token_id);
+            if (custom_uri.len() > 0) {
+                return custom_uri;
+            }
             if base_uri.len() == 0 {
                 return "";
             } else {
