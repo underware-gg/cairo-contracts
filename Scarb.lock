@@ -105,10 +105,10 @@ name = "openzeppelin_token"
 version = "0.15.1"
 dependencies = [
  "openzeppelin_account",
- "openzeppelin_governance",
  "openzeppelin_introspection",
  "openzeppelin_test_common",
  "openzeppelin_testing",
+ "openzeppelin_utils",
  "snforge_std",
 ]
 
